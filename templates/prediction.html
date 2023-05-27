@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Klasifikasi Penyakit Tanaman</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="container mt-4">
+      {% if error %}
+      <div class="alert alert-danger" role="alert">{{ error }}</div>
+      {% endif %}
+
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="mb-3 d-flex justify-content-center">
+            <img src="{{ image_path }}" alt="" width="25%" />
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              {% if result == "Fresh" %}
+              <h5 class="card-title">Tanaman Anda Sehat</h5>
+              <p class="card-text">Tanaman Anda tidak terkena penyakit.</p>
+              {% else %}
+              <h5 class="card-title">Tanaman Anda Sakit</h5>
+              <p class="card-text">
+                Nama Penyakit: <strong>{{ result }}</strong>
+              </p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% if result != "Fresh" %}
+      <div class="row mt-4">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Deskripsi Penyakit</h5>
+              <p class="card-text">{{ description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Tindakan Pencegahan</h5>
+              <p class="card-text">{{ prevention }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Pengobatan</h5>
+              <p class="card-text">{{ treatment }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+    <div class="row justify-content-center mt-3 mb-3">
+      <div class="col-6 text-center">
+        <div class="form-group">
+          <a href="/" class="btn btn-primary">Kembali ke halaman awal</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
