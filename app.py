@@ -1,8 +1,7 @@
 import os
 import cv2
 import joblib
-import numpy as np
-from flask import Flask, jsonify, request, render_template
+from flask import Flask, request, render_template
 from werkzeug.utils import secure_filename
 
 import module as md
